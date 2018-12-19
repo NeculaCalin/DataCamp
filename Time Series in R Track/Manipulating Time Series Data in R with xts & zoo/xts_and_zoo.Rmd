@@ -1,7 +1,7 @@
 ---
 title: "Manipulating Time Series Data in R with xts & zoo"
 output: 
-  html_notebook:
+  html_document:
     toc: yes
 ---
 
@@ -25,25 +25,9 @@ It is best to think of xts objects as normal R matrices, but with special powers
 
 In this exercise, you will get a feel for xts and how it behaves like a matrix object. The xts object ex_matrix and matrix object core have been pre-loaded for you.
 
-```{r eval=TRUE, echo = FALSE}
+```{r eval=TRUE, echo = FALSE, message=FALSE}
 library(xts)
 ```
-
-```{r echo = TRUE, eval=FALSE}
-# Load xts
-library(xts)
-
-# View the structure of ex_matrix
-str(ex_matrix)
-
-# Extract the 3rd observation of the 2nd column of ex_matrix
-ex_matrix[3, 2]
-
-# Extract the 3rd observation of the 2nd column of core 
-core[3, 2]
-
-```
-
 
 ```{r echo = TRUE, eval=TRUE}
 
