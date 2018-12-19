@@ -1,0 +1,72 @@
+---
+title: "Manipulating Time Series Data in R with xts & zoo"
+output: 
+  html_document:
+    toc: yes
+---
+
+#Introduction to eXtensible Time Series, using xts and zoo for time series 
+
+xts and zoo are just two of the many different types of objects that exist in R. 
+
+This chapter will introduce the basic objects in xts and zoo and their components, and offers examples of how to construct and examine the data. 
+
+**xts** extends the popular **zoo** package
+
+* xts objects are matrix objects internally.
+
+* xts objects are indexed by a formal time object.
+
+* Most zoo methods work for xts.
+
+### More than a matrix
+
+It is best to think of xts objects as normal R matrices, but with special powers. These powers let you manipulate your data as a function of time, as your data is now self-aware of when it exists in time. Before we can start to exploit these powers, it will be helpful to see how xts objects relate to their base-R relatives.
+
+In this exercise, you will get a feel for xts and how it behaves like a matrix object. The xts object ex_matrix and matrix object core have been pre-loaded for you.
+
+```{r eval=TRUE, echo = FALSE, message=FALSE}
+library(xts)
+```
+
+```{r echo = TRUE, eval=TRUE}
+
+# Create the object data using 5 random numbers
+data <- rnorm(5)
+
+# Create dates as a Date class object starting from 2016-01-01
+dates <- seq(as.Date("2016-01-01"), length = 5, by = "days")
+
+# Use xts() to create smith
+smith <- xts(x = data, order.by = dates)
+
+# Create bday (1899-05-08) using a POSIXct date class object
+bday <- as.POSIXct("1899-05-08")
+
+# Create hayek and add a new attribute called born
+hayek <- xts(x = data, order.by = dates, born = bday)
+print(hayek)
+```
+
+
+
+### Converting xts objects
+
+
+```{r echo = TRUE, eval=TRUE}
+# Convert austres to an xts object called au
+au <- as.xts(austres)
+
+# Then convert your xts object (au) into a matrix am
+am <- as.matrix(au)
+
+# Inspect the head of am
+print(head(am))
+
+# Convert the original austres into a matrix am2
+am2 <- as.matrix(austres)
+
+# Inspect the head of am2
+print(head(am2))
+
+```
